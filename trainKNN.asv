@@ -1,0 +1,12 @@
+% Creates data for the KNN to train
+for i = 1 : 11
+    filename = sprintf("mhi%d.txt",i);
+    mhi = readmatrix(filename);
+    nums = [];
+    for j = 1 : size(mhi,1)
+        for k = 1 : size(mhi,1)
+            if mhi(i,j) ~= 0
+                nums = [num]
+        end
+    end
+    outname = sprintf("KNN%d.txt",i);

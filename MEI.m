@@ -48,7 +48,7 @@ for i = 1 : size(steps,3)
     existing = readmatrix(name);
 %     existing = existing + c;
 %     writematrix(existing,name);
-imagesc(existing);
+    imagesc(existing);
     axis('image');
     colormap('gray');
     pause;
