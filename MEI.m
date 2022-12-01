@@ -1,7 +1,7 @@
 % Create MEI
 N = 12;
 for i=1:N
-    filename = sprintf('v1d2/f%d.jpg', i); % if starts with 1
+    filename = sprintf('v2d6/f%d.jpg', i); % if starts with 1
     Im(:,:,i) = rgb2gray(imread(filename));
 end
 
@@ -27,7 +27,7 @@ for i = 2 : N
     mei(:,:,i-1) = motion;
 end
 
-threshold = 0.1;
+threshold = 10;
 for i = 1 : size(steps,3)
     c = steps(:,:,i);
     for j = 1 : size(motion,1)
@@ -44,12 +44,20 @@ end
 % Read old MHI data and add to it
 for i = 1 : size(steps,3)
     c = steps(:,:,i);
-    name = sprintf('mhi%d.txt',i);
-    existing = readmatrix(name);
-%     existing = existing + c;
-%     writematrix(existing,name);
-    imagesc(existing);
+    name = sprintf('training%d.txt',i);
+    nums = [];
+    for j = 1 : size(c,1)
+        for k = 1 : size(c,1)
+            if c(j,k) ~= 0
+                addendum = [j k 1];
+                nums = [nums; addendum];
+            end
+        end
+    end
+    prev = readmatrix(name);
+    nums = [prev;nums];
+    writematrix(nums,name);
+    imagesc(c);
     axis('image');
     colormap('gray');
-    pause;
 end

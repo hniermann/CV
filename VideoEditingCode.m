@@ -1,6 +1,6 @@
 % Read in video 1
-vid1 = VideoReader('OG1.MOV');
-vid1.CurrentTime = 9;
+vid1 = VideoReader('OG2.MOV');
+vid1.CurrentTime = 102;
 currAxes = axes;
 num = 1;
 % Iterate and look for end. Then get 10 frames between 1 and num
